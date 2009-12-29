@@ -11,31 +11,20 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    zoomIn = new QAction(QIcon(":/zoom-in.svg"), tr("Zoom in"), this);
-    connect(zoomIn, SIGNAL(triggered()), this, SLOT(imageZoomIn()));
-    ui->mainToolBar->addAction(zoomIn);
-
-    zoomOut = new QAction(QIcon(":/zoom-out.svg"), tr("Zoom out"), this);
-    connect(zoomOut, SIGNAL(triggered()), this, SLOT(imageZoomOut()));
-    ui->mainToolBar->addAction(zoomOut);
-
-    zoomOriginal = new QAction(QIcon(":/zoom-original.svg"), tr("Zoom original"), this);
-    connect(zoomOriginal, SIGNAL(triggered()), this, SLOT(imageZoomOriginal()));
-    ui->mainToolBar->addAction(zoomOriginal);
-
-    fitBest = new QAction(QIcon(":/zoom-fit-best.svg"), tr("Fit best"), this);
-    connect(fitBest, SIGNAL(triggered()), this, SLOT(imageFitBest()));
-    ui->mainToolBar->addAction(fitBest);
+    connect(ui->actionZoomIn, SIGNAL(triggered()), this, SLOT(imageZoomIn()));
+    connect(ui->actionZoomOut, SIGNAL(triggered()), this, SLOT(imageZoomOut()));
+    connect(ui->actionZoomOriginal, SIGNAL(triggered()), this, SLOT(imageZoomOriginal()));
+    connect(ui->actionZoomFit, SIGNAL(triggered()), this, SLOT(imageFitBest()));
 
     QGraphicsPixmapItem *item;
 
-//    const int ymin = 606, ymax = 609, xmin = 187, xmax = 191;
-//    const QString mappath("/home/ptroja/ports/fetch_map/map_cache/rka/25000_256_256/655_300/map_rka_25000_%1_%2.png");
+    const int ymin = 606, ymax = 609, xmin = 187, xmax = 191;
+    const QString mappath("/home/ptroja/ports/fetch_map/map_cache/rka/25000_256_256/655_300/map_rka_25000_%1_%2.png");
 
     const int minFileSize = 3385; // minimum file size
 
-    const int ymin = 225, ymax = 316, xmin = 503, xmax = 595;
-    const QString mappath("/home/ptroja/boost/tilemap/maps/map_rka_15000_%1_%2.png");
+//    const int ymin = 225, ymax = 316, xmin = 503, xmax = 595;
+//    const QString mappath("/home/ptroja/boost/tilemap/maps/map_rka_15000_%1_%2.png");
 
     QSize tileSize;
 
